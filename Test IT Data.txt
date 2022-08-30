@@ -1,0 +1,22 @@
+Database yang digunakan phpmyadmin
+
+UPDATE `data_cabang` SET `id`= '002' ,`induk`='002',`nama`='Kantor Cabang Koordinator Surakarta' WHERE id='002'
+
+UPDATE `data_nasabah` SET `IdNasabah`='93319361',`KodeCabang`='093',`NamaNasabah`='NANANG SUHENDAR',`Alamat`='HADIPOLO RT6 RW1',`Kota`='KAB. CILACAP',`Jenis Kelamin`='L',`TempatLahir`='JEPARA',`TanggalLahir`='19710725',`Pekerjaan`='PEMERINTAHAN',`TanggalInsert`='20050108',`TanggalUpdate`='20180921' WHERE IdNasabah='93319361';
+
+UPDATE `data_nasabah` SET `IdNasabah`='92933314',`KodeCabang`='002',`NamaNasabah`='SARJONO',`Alamat`='KANCILAN RT 05 RW 07 KEMBANG',`Kota`='KAB. CILACAP',`Jenis Kelamin`='L',`TempatLahir`='SURAKARTA',`TanggalLahir`='19540117',`Pekerjaan`='PENDIDIKAN',`TanggalInsert`='20140430',`TanggalUpdate`='20181017' WHERE IdNasabah='92933314';
+
+
+Test 1 :
+
+SELECT nama AS 'cabkor', nama AS 'cabang', nama AS 'unit_kerja' FROM `data_cabang` WHERE id='002';
+
+
+Test 2 :
+
+SELECT IdNasabah, KodeCabang, NamaNasabah, TanggalLahir, (TanggalLahir AS 'CekTanggal' if date(TanggalLahir)='YYYY-MM-dd' return 'TRUE') FROM `data_nasabah` WHERE IdNasabah = '93319361'
+
+
+Test 3 :
+
+SELECT Pekerjaan, (TanggalLahir AS KelompokUsia if TanggalLahir>'' AND TanggalLahir < ''), (COUNT(IdNasabah) WHERE TanggalLahir > '') AS Total FROM `data_nasabah` WHERE
